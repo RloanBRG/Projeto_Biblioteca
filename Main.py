@@ -12,3 +12,5 @@ def menu():
 
 
 menu()
+
+print("hello")
