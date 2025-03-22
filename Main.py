@@ -13,4 +13,4 @@ def menu():
 
 menu()
 
-print("hello")
+print("hi")
