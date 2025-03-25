@@ -1,4 +1,9 @@
 { 
-    "livros": [],
+    "livros": [
+        {"id": 1, "titulo": "teste", "ano": 123, "genero": "teste", "autor": "da silva", "disponivel": false},
+
+        {"id": 2, "titulo": "santos", "ano": 456, "genero": "teste", "autor": "da silva", "disponivel": true}
+    ],
+
     "Usuarios": []
 }

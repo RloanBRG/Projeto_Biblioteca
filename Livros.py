@@ -1,5 +1,7 @@
-class book_overview: # Cria um objeto Livro
-    def __init__ (self, id, titulo, ano, genero, autor, disponivel):
+import json
+
+class Livro_Objeto: # Cria um objeto Livro
+    def __init__ (self, id: int, titulo: str, ano: int, genero: str, autor: str, disponivel: bool): # Contrutor do objeto livros
         self.id = id
         self.titulo = titulo
         self.ano = ano
@@ -7,12 +9,8 @@ class book_overview: # Cria um objeto Livro
         self.autor = autor
         self.disponivel = disponivel
 
-    def exibir_dados(self):
-        return (f"titulo: {self.titulo}, ano: {self.ano}, genero: {self.genero}, autor: {self.autor}")
+    def exibir_dados(self): # Função de retorno de informações
+        print(f"Titulo: {self.titulo},\nAno: {self.ano},\nGenero: {self.genero},\nAutor: {self.autor}")
     
-    def salvar_json(self):
-        print("Função não construida")
-
-
-    def carregar_json(self):
-        print("Função não construida")
+    def salvar_json(self): # Em andamento
+        print("Função não construida") 
