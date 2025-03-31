@@ -85,3 +85,4 @@ def coletar_dados_usuario(): # Função que atuará na criação e salvamento de
 
     salvar_json(dados)
     print(f"O Usuario '{nome}' foi adicionado, mas será que foi?")
+    #confirmando modificações
