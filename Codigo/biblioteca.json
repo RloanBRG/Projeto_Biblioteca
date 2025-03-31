@@ -1,9 +1,60 @@
-{ 
-    "livros": [
-        {"id": 1, "titulo": "teste", "ano": 123, "genero": "teste", "autor": "da silva", "disponivel": false},
-
-        {"id": 2, "titulo": "santos", "ano": 456, "genero": "teste", "autor": "da silva", "disponivel": true}
+{
+    "Livros": [
+        {
+            "id": 1,
+            "titulo": "teste",
+            "ano": 123,
+            "genero": "teste",
+            "autor": "da silva",
+            "disponivel": false
+        },
+        {
+            "id": 2,
+            "titulo": "santos",
+            "ano": 456,
+            "genero": "teste",
+            "autor": "da silva",
+            "disponivel": true
+        },
+        {
+            "id": 3,
+            "titulo": "titulo teste",
+            "ano": "1234",
+            "genero": "existe",
+            "autor": "a",
+            "disponivel": true
+        },
+        {
+            "id": 4,
+            "titulo": "funcionou",
+            "ano": "23342025",
+            "genero": "que bom",
+            "autor": "Rodrigo Loan",
+            "disponivel": true
+        },
+        {
+            "id": 5,
+            "titulo": "a",
+            "ano": "132",
+            "genero": "b",
+            "autor": "c",
+            "disponivel": true
+        }
     ],
-
-    "Usuarios": []
+    "Usuarios": [
+        {
+            "id": 1,
+            "nome": "Robson",
+            "idade": 20,
+            "email": "email@gmail.com",
+            "tipo": "comum"
+        },
+        {
+            "id": 2,
+            "nome": "Aruan da Silva",
+            "idade": "30",
+            "email": "email@email.com.br",
+            "tipo": "comum"
+        }
+    ]
 }

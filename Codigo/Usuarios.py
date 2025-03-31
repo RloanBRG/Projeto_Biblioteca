@@ -1,18 +1,20 @@
 class Usuario_Objeto: # Cria Usuarios
-    def __init__ (self, name, idade, email, tipo):
-        self.name = name
+    def __init__ (self, id: int, nome: str, idade: int, email: str, tipo: str):
+        self.id = id
+        self.nome = nome
         self.idade = idade
         self.email = email
         self.tipo = tipo
 
-    def atualizar_usuario():
-        ...
-
-    def deletar_usuario():
-        ...
-
-    def adicionar_usuario():
-        ...
+    def para_dicionario(self): # Retorna o que seria uma lista de dados de um livro em um dicionario, tipo aceito em json para que o salvamento ocorra
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "idade": self.idade,
+            "email": self.email,
+            "tipo": self.tipo
+            
+        }
 
     def verificar_idade_permição(self):
         if self.idade > 18:
