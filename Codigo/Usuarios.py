@@ -10,7 +10,7 @@ class Usuario_Objeto: # Cria Usuarios
         return {
             "id": self.id,
             "nome": self.nome,
-            "idade": self.idade,
+            "idade": int(self.idade),
             "email": self.email,
             "tipo": self.tipo
             

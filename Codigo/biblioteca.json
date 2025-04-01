@@ -6,7 +6,8 @@
             "ano": 123,
             "genero": "teste",
             "autor": "da silva",
-            "disponivel": false
+            "disponivel": false,
+            "quantidade": 0
         },
         {
             "id": 2,
@@ -14,31 +15,89 @@
             "ano": 456,
             "genero": "teste",
             "autor": "da silva",
-            "disponivel": true
+            "disponivel": true,
+            "quantidade": 5
         },
         {
             "id": 3,
             "titulo": "titulo teste",
-            "ano": "1234",
+            "ano": 1234,
             "genero": "existe",
             "autor": "a",
-            "disponivel": true
+            "disponivel": true,
+            "quantidade": 3
         },
         {
             "id": 4,
             "titulo": "funcionou",
-            "ano": "23342025",
+            "ano": 23342025,
             "genero": "que bom",
             "autor": "Rodrigo Loan",
-            "disponivel": true
+            "disponivel": true,
+            "quantidade": 8
         },
         {
             "id": 5,
             "titulo": "a",
-            "ano": "132",
+            "ano": 132,
             "genero": "b",
             "autor": "c",
-            "disponivel": true
+            "disponivel": true,
+            "quantidade": 6
+        },
+        {
+            "id": 6,
+            "titulo": "livro",
+            "ano": 567,
+            "genero": "existe",
+            "autor": "a",
+            "disponivel": true,
+            "quantidade": 5
+        },
+        {
+            "id": 7,
+            "titulo": "a",
+            "ano": 789,
+            "genero": "abc",
+            "autor": "cba",
+            "disponivel": true,
+            "quantidade": "7"
+        },
+        {
+            "id": 8,
+            "titulo": "false",
+            "ano": 0,
+            "genero": "alberto",
+            "autor": "alberto",
+            "disponivel": false,
+            "quantidade": "0"
+        },
+        {
+            "id": 9,
+            "titulo": "ola",
+            "ano": "78",
+            "genero": "abs",
+            "autor": "c",
+            "disponivel": true,
+            "quantidade": "4"
+        },
+        {
+            "id": 10,
+            "titulo": "titulo",
+            "ano": 345,
+            "genero": "ola",
+            "autor": "autoir",
+            "disponivel": true,
+            "quantidade": 8
+        },
+        {
+            "id": 11,
+            "titulo": "titilo",
+            "ano": 123,
+            "genero": "ficção",
+            "autor": "nome",
+            "disponivel": true,
+            "quantidade": 4
         }
     ],
     "Usuarios": [
@@ -55,6 +114,27 @@
             "idade": "30",
             "email": "email@email.com.br",
             "tipo": "comum"
+        },
+        {
+            "id": 3,
+            "nome": "testaldo da silva",
+            "idade": "30",
+            "email": "email@email.com.br",
+            "tipo": "adm"
+        },
+        {
+            "id": 4,
+            "nome": "nome",
+            "idade": 15,
+            "email": "mail@yahoo.com",
+            "tipo": "comum"
+        },
+        {
+            "id": 5,
+            "nome": "nome usuario",
+            "idade": 30,
+            "email": "email@gmail.com",
+            "tipo": "autor"
         }
     ]
 }

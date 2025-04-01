@@ -1,4 +1,4 @@
-from Codigo_json import carregar_json, verificar_caminho, coletar_dados_livro, coletar_dados_usuario
+from Codigo_json import emprestimo_livro,carregar_json, verificar_caminho, coletar_dados_livro, coletar_dados_usuario, listar_dados_livro, listar_dados_usuario
 
 
 import json # Leitura de arquivo json
@@ -11,9 +11,10 @@ def menu():
         print("")
         print("1: Cadastro de livros")
         print("2: Cadastro de Usarios")
-        print("3: Emprestimo (em produção)")
-        print("4: Devolução (em produção)")
-        print("5: Listar livros (em produção)")
+        print("3: Emprestimo (codificando)")
+        print("4: Devolução (codificando)")
+        print("5: Listar livros")
+        print("6: Listar Usuarios")
         print("0: Sair")
 
 
@@ -24,6 +25,18 @@ def menu():
 
         elif option == 2:
             coletar_dados_usuario()
+
+        elif option == 3:
+            emprestimo_livro()
+
+        elif option == 4:
+            emprestimo_livro()
+
+        elif option == 5:
+            listar_dados_livro()
+        
+        elif option == 6:
+            listar_dados_usuario()
 
         elif option == 314: # Codigo debug se função carregar json funciona
             verificar_caminho()
