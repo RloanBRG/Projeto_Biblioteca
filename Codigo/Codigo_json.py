@@ -11,7 +11,7 @@ def verificar_caminho():
     print("")
     print(f"O caminho do JSON é {caminho_json}")
 
-# Função 1
+# Função 1: Carregar informações do json
 def carregar_json(): # Carregar informações do arquivo biblioteca.json
         try:
             with open(caminho_json, "r", encoding="utf-8") as f:
@@ -21,12 +21,12 @@ def carregar_json(): # Carregar informações do arquivo biblioteca.json
         except json.JSONDecodeError:
             print("Erro: não foi possivel decodificar o arquvo json")
 
-# Função 2
+# Função 2: salvar informações no json
 def salvar_json(dados): # Salvamento de dados
     with open(caminho_json, "w", encoding="utf-8") as f:
         json.dump(dados, f, indent=4, ensure_ascii=False)
 
-# Função 3
+# Função 3: Coleta dados de livros para salvar no json
 def coletar_dados_livro(): # Função que atuará na criação e salvamento de um livro no arquivo json
     dados = carregar_json()
 
@@ -64,7 +64,7 @@ def coletar_dados_livro(): # Função que atuará na criação e salvamento de u
     salvar_json(dados)
     print(f"O livro '{titulo}' foi adicionado, mas será que foi?")
 
-# Função 4
+# Função 4: Coleta dados de usuario para salvamento no json
 def coletar_dados_usuario(): # Função que atuará na criação e salvamento de um usuario no arquivo json
     dados = carregar_json()
 
@@ -104,7 +104,7 @@ def coletar_dados_usuario(): # Função que atuará na criação e salvamento de
     print(f"O Usuario '{nome}' foi adicionado, mas será que foi?")
 
 
-# Função 5
+# Função 5: Listar livros salvos no json
 def listar_dados_livro(): #Listagem dos livros
     dados = carregar_json()
     if not dados["Livros"]:
@@ -128,7 +128,7 @@ def listar_dados_livro(): #Listagem dos livros
         print("-"*40)
 
 
-# Função 6        
+# Função 6: Listar usuarios salvos no json        
 def listar_dados_usuario(): #Listagem dos livros
     dados = carregar_json()
     if not dados["Usuarios"]:
@@ -146,55 +146,79 @@ def listar_dados_usuario(): #Listagem dos livros
 
         print("-"*40)
 
+# Função 7: Função de emprestimo de livros
 def emprestimo_livro():
     dados = carregar_json()
-    print("Qual livro voce quer emprestar?")
     listar_dados_livro()
     
     while True:
+        print("Qual livro voce quer emprestar? - caso não digite 0")
         livro_id = input("digite o id: ")
         if livro_id.isdigit():
-            int(livro_id)
+            livro_id = int(livro_id)
             break
         else:
             print("Valor inserido não é um numero")
 
-    for livros in dados["Livros"]:
-        if livros['id'] == int(livro_id):
-            if livros['quantidade'] > 0 and livros['disponivel'] == True:
-                livros['quantidade'] -= 1
-                if livros['quantidade'] == 0:
-                    livros['disponivel'] = False
-                salvar_json(dados)
-                print(f"O livro {livros['titulo']} foi emprestado")
-            
-            else:
-                print(f"Um {livros['titulo']} já foi emprestado")
-                return
-    print(f"Não foi encontrado um Livro com ID {livro_id}")
+    if livro_id == 0:
+        return "Opção cancelada"
 
+    livro_encontrado = False
+
+    for livros in dados["Livros"]:
+            if livros['id'] == int(livro_id):
+                livro_encontrado = True
+                if (livros['quantidade'] > 0):
+                    livros['quantidade'] -= 1
+
+                    if livros['quantidade'] == 0:
+                        livros['disponivel'] = False
+                        
+                    salvar_json(dados)
+                    print(f"O livro {livros['titulo']} foi emprestado")
+                    break
+                
+                else:
+                    print(f"Um {livros['titulo']} já foi emprestado")
+                    return
+                
+    if not livro_encontrado:            
+        print(f"Não foi encontrado um Livro com ID {livro_id}")
+
+
+# Função 8: função de devolução de livros
 def devolver_livro():
     dados = carregar_json()
-
-    print("Qual livro voce quer devolver?")
     listar_dados_livro()
     
     while True:
+        print("Qual livro voce quer devolver? - caso não, digite 0")
         livro_id = input("digite o id: ")
         if livro_id.isdigit():
-            int(livro_id)
+            livro_id = int(livro_id)
             break
         else:
             print("Valor inserido não é um numero")
 
+    if livro_id == 0:
+        return "Opção cancelada"
+
+    livro_encontrado = False
+
     for livros in dados["Livros"]:
         if livros['id'] == int(livro_id):
-            if livros['quantidade'] == 0 and livros['disponivel'] == False:
+            livro_encontrado = True
+            if livros['quantidade'] == 0: 
                 livros['quantidade'] += 1
+
+                if livros['disponivel'] == False:
+                    livros['disponivel'] = True
+
                 salvar_json(dados)
                 print(f"O livro {livros['titulo']} foi devolvido")
             
             else:
                 print(f"Um {livros['titulo']} já foi devolvido")
                 return
-    print(f"Não foi encontrado um Livro com ID {livro_id}")
+    if not livro_encontrado:
+        print(f"Não foi encontrado um Livro com ID {livro_id}")

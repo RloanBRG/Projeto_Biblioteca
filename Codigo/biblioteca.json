@@ -34,7 +34,7 @@
             "genero": "que bom",
             "autor": "Rodrigo Loan",
             "disponivel": true,
-            "quantidade": 8
+            "quantidade": 6
         },
         {
             "id": 5,
@@ -43,7 +43,7 @@
             "genero": "b",
             "autor": "c",
             "disponivel": true,
-            "quantidade": 6
+            "quantidade": 4
         },
         {
             "id": 6,
@@ -98,6 +98,15 @@
             "autor": "nome",
             "disponivel": true,
             "quantidade": 4
+        },
+        {
+            "id": 12,
+            "titulo": "titulo qualquer",
+            "ano": 1890,
+            "genero": "algum",
+            "autor": "nome",
+            "disponivel": false,
+            "quantidade": 0
         }
     ],
     "Usuarios": [
@@ -135,6 +144,13 @@
             "idade": 30,
             "email": "email@gmail.com",
             "tipo": "autor"
+        },
+        {
+            "id": 6,
+            "nome": "falta",
+            "idade": 19,
+            "email": "verificar@email.com",
+            "tipo": "comum"
         }
     ]
 }

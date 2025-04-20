@@ -1,4 +1,4 @@
-from Codigo_json import emprestimo_livro,carregar_json, verificar_caminho, coletar_dados_livro, coletar_dados_usuario, listar_dados_livro, listar_dados_usuario
+from Codigo_json import *
 
 
 import json # Leitura de arquivo json
@@ -30,7 +30,7 @@ def menu():
             emprestimo_livro()
 
         elif option == 4:
-            emprestimo_livro()
+            devolver_livro()
 
         elif option == 5:
             listar_dados_livro()

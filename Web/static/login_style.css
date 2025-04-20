@@ -1,0 +1,54 @@
+html{
+    background-color: 222;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    font-size: 20px;
+}
+
+body{
+    background-color: #222;
+    color: white;
+    padding-top: 10%;
+    height: 60%;
+    width: 100%
+}
+
+#conteudo_site{
+    background-color: #444;
+    border-radius: 10px;
+    padding: 5px 25px 25px 25px;
+    height: 50%;
+    width: 30%;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    display: flex;
+}
+
+h2{
+    justify-self: center;
+}
+
+input{
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.input_user{
+    margin: 10px;
+    justify-self: center;
+}
+
+#user_botao{
+    
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+    background-color: white;
+    margin: 10px 5px 5px 5px;
+    border-radius: 10px;
+    border: solid 2px;
+}
