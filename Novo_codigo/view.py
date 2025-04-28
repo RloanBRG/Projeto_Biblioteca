@@ -21,8 +21,8 @@ def login_home():
             if usuario['email'] == email:
                 return redirect(url_for('pagina_principal'))
 
-        # if existe_usuario == False:
-        return render_template("login.html", mensagem = "Email ou senha invalidos(debug: algum erro aconteceu)")
+        
+        return render_template("login.html", mensagem = "Email ou senha invalidos")
 
 
     return render_template("login.html")

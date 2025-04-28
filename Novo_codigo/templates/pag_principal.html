@@ -7,11 +7,30 @@
     <title>Listagem de livros</title>
 </head>
 <body>
-    <h1>Teste listagem livros</h1>
-    <ul>
-        {% for livro in livros %}
-            <li>{{ livro.titulo }} - {{ livro.autor }}</li>
-        {% endfor %}
-    </ul>
+    <div class="lista_livros">
+        <table border="1">
+            <h1>Listagem de Livros</h1>
+            <tr>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Ano</th>
+                <th>Genero</th>
+                <th>Disponivel</th>
+                <th>Quantidade</th>
+           </tr>
+           {% for livro in livros%}
+           <tr>
+                <td>{{livro["titulo"]}}</td>
+                <td>{{livro["autor"]}}</td>
+                <td>{{livro["ano"]}}</td>
+                <td>{{livro["genero"]}}</td>
+                <td>{{'Sim' if livro["disponivel"] else 'Não'}}</td>
+                <td>{{livro["quantidade"] if livro["disponivel"] else 0}}</td>
+                
+           </tr>
+           {%endfor%}
+        </table>
+
+    </div>    
 </body>
 </html>
