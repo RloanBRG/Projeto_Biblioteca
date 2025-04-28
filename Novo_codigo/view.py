@@ -37,7 +37,7 @@ def perfil_usuario():
 
 @app.route("/principal")
 def pagina_principal():
-    verificar_caminho()
+
     dados = carregar_json()
 
     if dados is None:
