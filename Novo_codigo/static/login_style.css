@@ -34,15 +34,22 @@ input{
     justify-self: center;
     align-items: center;
     border-radius: 5px;
+    size: 10px;
+    padding: 10px;
 }
 
 .input_user{
     margin: 10px;
+    gap: 10px;
+    border: 5px;
     justify-self: center;
+    display:inline-flex;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #user_botao{
-    
     justify-content: center;
     align-items: center;
     width: 80px;
@@ -51,4 +58,21 @@ input{
     margin: 10px 5px 5px 5px;
     border-radius: 10px;
     border: solid 2px;
+}
+#user_botao:hover{
+    cursor: pointer;
+    background-color: #dddddd;
+}
+form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-content: center;
+    margin: 5px 5px;
+}
+
+span{
+    size: 10px;
+    color: red;
 }

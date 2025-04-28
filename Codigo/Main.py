@@ -1,4 +1,5 @@
 from Codigo_json import *
+from Web.flask_web import app
 
 
 import json # Leitura de arquivo json
@@ -51,4 +52,5 @@ def menu():
             print("Tente novamente")
 
 
-menu()
+
+app()

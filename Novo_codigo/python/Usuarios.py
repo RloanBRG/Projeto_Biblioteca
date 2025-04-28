@@ -1,9 +1,10 @@
 class Usuario_Objeto: # Cria Usuarios
-    def __init__ (self, id: int, nome: str, idade: int, email: str, tipo: str):
+    def __init__ (self, id: int, nome: str, idade: int, email: str, senha: str, tipo: str):
         self.id = id
         self.nome = nome
         self.idade = idade
         self.email = email
+        self.senha = senha
         self.tipo = tipo
 
     def para_dicionario(self): # Retorna o que seria uma lista de dados de um livro em um dicionario, tipo aceito em json para que o salvamento ocorra
@@ -25,3 +26,6 @@ class Usuario_Objeto: # Cria Usuarios
 
         else:
             print("Não tem acesso a livros de maior idade")
+
+    def autenticacao_email(self):
+        ...

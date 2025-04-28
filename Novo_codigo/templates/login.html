@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/login_style.css">
+    <title>Painel de login</title>
+</head>
+<body>
+    <div id="conteudo_site">
+        <div id="login_painel">
+            <h2>Login</h2>
+            <div class="input_user">          
+                <form action="/login" method="post">
+                    
+                    <input type="email" name="email" placeholder="Email" required>
+                    
+                    <input type="password" name="password" placeholder="Senha" required>
+                    
+                    <button type="submit" id="user_botao">Enviar</button>
+                </form>
+                {% if mensagem %}  
+                    <span>{{mensagem}}</span>
+                {% endif %}
+            </div>
+            
+        </div>
+
+    </div>
+</body>
+</html>

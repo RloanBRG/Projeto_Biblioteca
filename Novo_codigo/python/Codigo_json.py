@@ -1,21 +1,24 @@
-from Livros import Livro_Objeto
-from Usuarios import Usuario_Objeto
+from .Livros import Livro_Objeto
+from .Usuarios import Usuario_Objeto
 import json
 import os
 
 pasta_projeto = os.path.dirname(os.path.abspath(__file__)) # Verica onde o arquivo esta localizado no computador
-caminho_json = os.path.join(pasta_projeto, "biblioteca.json") # Verica se existe um biblioteca para ser adionado no diretorio
+caminho_json = os.path.join(pasta_projeto, '..', "biblioteca.json") # Verica se existe um biblioteca para ser adionado no diretorio
 # Função debug (teste)
 def verificar_caminho():
     print(f"o caminho da pasta é {pasta_projeto}")
     print("")
     print(f"O caminho do JSON é {caminho_json}")
-
 # Função 1: Carregar informações do json
 def carregar_json(): # Carregar informações do arquivo biblioteca.json
         try:
             with open(caminho_json, "r", encoding="utf-8") as f:
-                return json.load(f)               
+                dados = json.load(f)
+                if dados is None:
+                    print("Error: json não encontrou dados inseridos")
+
+                return dados               
         except FileNotFoundError:
             print("Erro: Arquivo não encontrado")
         except json.JSONDecodeError:
@@ -107,7 +110,7 @@ def coletar_dados_usuario(): # Função que atuará na criação e salvamento de
 # Função 5: Listar livros salvos no json
 def listar_dados_livro(): #Listagem dos livros
     dados = carregar_json()
-    if not dados["Livros"]:
+    if not dados['Livros']:
         print("Nenhum livro cadastrado")
         return
     
@@ -222,3 +225,8 @@ def devolver_livro():
                 return
     if not livro_encontrado:
         print(f"Não foi encontrado um Livro com ID {livro_id}")
+
+
+# Função 9: autencicação de email do usuario
+def autenticacao_usuario():
+    ...
