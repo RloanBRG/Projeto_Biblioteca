@@ -1,7 +1,7 @@
-from flask import Flask
-from python.Codigo_json import *
+from flask import Flask, session
 
 app = Flask(__name__)
+app.secret_key = "ajndiuoashudhih173y12y73y17"
 
 from view import *
 

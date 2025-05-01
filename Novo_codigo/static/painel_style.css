@@ -1,12 +1,17 @@
 html{
     font-family: Arial, Helvetica, sans-serif;
-    size: 12px;
 }
 
 body{
     background-color: #222;
     color: white;
 }
+
+header{
+    display: flex;
+    justify-content: space-around;
+}
+
 .lista_livros{
     display: flex;
     flex-direction: column;
@@ -17,4 +22,13 @@ body{
 td{
     padding: 5px 15px;
     text-align: center;
+}
+th{
+    font-size: 20px;
+}
+
+th, td{
+    border: 1px solid white;
+    padding: 5px;
+    margin: 5px;
 }

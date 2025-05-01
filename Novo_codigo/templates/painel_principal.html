@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/pag_principal_style.css">
+    <link rel="stylesheet" href="../static/painel_style.css">
     <title>Listagem de livros</title>
 </head>
 <body>
+    <header>
+        <span>Ola, {{nome_usuario}}</span>
+        <a href="{{voltar}}">
+            <button>Voltar para a pagina inical</button>
+        </a>
+    </header>
     <div class="lista_livros">
-        <table border="1">
+        <table>
             <h1>Listagem de Livros</h1>
             <tr>
                 <th>Titulo</th>
@@ -30,7 +36,7 @@
            </tr>
            {%endfor%}
         </table>
-
+        <button action="/edição_livros"></button>
     </div>    
 </body>
 </html>

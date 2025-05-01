@@ -3,8 +3,8 @@ class Usuario_Objeto: # Cria Usuarios
         self.id = id
         self.nome = nome
         self.idade = idade
-        self.email = email
         self.senha = senha
+        self.email = email
         self.tipo = tipo
 
     def para_dicionario(self): # Retorna o que seria uma lista de dados de um livro em um dicionario, tipo aceito em json para que o salvamento ocorra
@@ -13,7 +13,8 @@ class Usuario_Objeto: # Cria Usuarios
             "nome": self.nome,
             "idade": int(self.idade),
             "email": self.email,
-            "tipo": self.tipo
+            "senha": self.senha,
+            "tipo": str(self.tipo)
             
         }
 

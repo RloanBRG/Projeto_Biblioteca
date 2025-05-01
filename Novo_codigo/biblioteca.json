@@ -97,7 +97,7 @@
             "genero": "ficção",
             "autor": "nome",
             "disponivel": true,
-            "quantidade": 4
+            "quantidade": 3
         },
         {
             "id": 12,
@@ -105,51 +105,59 @@
             "ano": 1890,
             "genero": "algum",
             "autor": "nome",
-            "disponivel": false,
-            "quantidade": 0
+            "disponivel": true,
+            "quantidade": 1
+        },
+        {
+            "id": 13,
+            "titulo": "hollow knight",
+            "ano": 2017,
+            "genero": "ficção",
+            "autor": "nome",
+            "disponivel": true,
+            "quantidade": 2
+        },
+        {
+            "id": 14,
+            "titulo": "a",
+            "ano": 123,
+            "genero": "b",
+            "autor": "c",
+            "disponivel": true,
+            "quantidade": 3
         }
     ],
     "Usuarios": [
         {
             "id": 1,
-            "nome": "Robson",
+            "nome": "falta",
             "idade": 20,
-            "email": "email@gmail.com",
+            "email": "verificar@email.com",
+            "senha": "verificarsenha",
             "tipo": "comum"
         },
         {
             "id": 2,
-            "nome": "Aruan da Silva",
-            "idade": "30",
-            "email": "email1@email.com.br",
-            "tipo": "comum"
-        },
-        {
-            "id": 3,
-            "nome": "testaldo da silva",
-            "idade": "30",
-            "email": "email2@email.com.br",
+            "nome": "Teste da silva",
+            "idade": 24,
+            "email": "adm@email.com",
+            "senha": "souumadmbao",
             "tipo": "adm"
         },
         {
-            "id": 4,
-            "nome": "nome",
-            "idade": 15,
-            "email": "mail@yahoo.com",
+            "id": 3,
+            "nome": "Nome aleatorio",
+            "idade": 30,
+            "email": "email@email.com",
+            "senha": "sucesso",
             "tipo": "comum"
         },
         {
-            "id": 5,
-            "nome": "nome usuario",
-            "idade": 30,
-            "email": "email@gmail.com",
-            "tipo": "autor"
-        },
-        {
-            "id": 6,
-            "nome": "falta",
-            "idade": 19,
-            "email": "verificar@email.com",
+            "id": 4,
+            "nome": "alguem",
+            "idade": 20,
+            "email": "emaildasilva@email.com",
+            "senha": "123123456",
             "tipo": "comum"
         }
     ]

@@ -1,5 +1,6 @@
 from .Livros import Livro_Objeto
 from .Usuarios import Usuario_Objeto
+
 import json
 import os
 
@@ -23,6 +24,8 @@ def carregar_json(): # Carregar informações do arquivo biblioteca.json
             print("Erro: Arquivo não encontrado")
         except json.JSONDecodeError:
             print("Erro: não foi possivel decodificar o arquvo json")
+
+carregar_json()
 
 # Função 2: salvar informações no json
 def salvar_json(dados): # Salvamento de dados
@@ -82,10 +85,13 @@ def coletar_dados_usuario(): # Função que atuará na criação e salvamento de
             print("Valor inserido não é um numero")
 
     email = input("Qual o seu email?: ")
+    senha = input("Qual a senha do usuario?: ")
+
     print("Qual o tipo desse usuario?")
 
     while True: # Selecionador de tipo de usuario
         selecionar_tipo = input("Selecione uma das opções:\n(1 - Comum | 2 - autor | 3 - administrador): ")
+
         if selecionar_tipo == "1":
             tipo = "comum"
             break
@@ -99,7 +105,7 @@ def coletar_dados_usuario(): # Função que atuará na criação e salvamento de
             print("Valor inserido invalido")
 
     usuario_id = len(dados["Usuarios"]) + 1 # Adição de id com base no tamanho da lista de Usuario em json
-    novo_usuario = Usuario_Objeto(usuario_id, nome, idade, email, tipo)
+    novo_usuario = Usuario_Objeto(usuario_id, nome, idade, email, senha, tipo)
 
     dados["Usuarios"].append(novo_usuario.para_dicionario())
 

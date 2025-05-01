@@ -9,23 +9,66 @@
 <body>
     <div id="conteudo_site">
         <div id="login_painel">
-            <h2>Login</h2>
+            <h2 id="titulo_form">Login</h2>
             <div class="input_user">          
                 <form action="/login" method="post">
                     
+                    <input type="text" name="nome" id="campo_nome" class="registro_usuario" placeholder="Nome">
+
+                    <input type="number" name="idade" id="campo_idade" class="registro_usuario" placeholder="Idade">
+
                     <input type="email" name="email" placeholder="Email" required>
                     
                     <input type="password" name="password" placeholder="Senha" required>
+
+                    <input type="hidden" name="acao" id="acao" value="login">
                     
                     <button type="submit" id="user_botao">Enviar</button>
                 </form>
                 {% if mensagem %}  
-                    <span>{{mensagem}}</span>
+                    <span id="{{categoria}}_mensagem">{{mensagem}}</span>
                 {% endif %}
             </div>
             
-        </div>
+            <div>
+                
+                <div>
+                    <span id="loginregistrar">Novo aqui?</span>
+                    <button onclick="pararegistro()" id="user_botao">Registre-se</button>
+                </div>
+                
+                <div>
+                    <span id="loginregistrar">Já possui uma conta?</span>
+                    <button onclick="paralogar()" id="user_botao">Logar</button>
+                </div>
+                
+                <div>
+                    <span>Esqueceu a senha?</span>
+                    <button action="/alterar_senha" id="user_botao">Alterar senha</button>
+                </div>
+                
+            </div>
+
+            </div>
+    </div>
 
     </div>
+
+    <script>
+        function pararegistro(){
+            document.getElementById("campo_nome").style.display = "block";
+            document.getElementById("campo_idade").style.display = "block";
+            document.getElementById("acao").value= "registro"
+            document.getElementById("titulo_form").innerText = "Registro"
+            // document.getElementById("conteudo_site").style.width
+        }
+
+        function paralogar(){
+            document.getElementById("campo_nome").style.display = "none";
+            document.getElementById("campo_idade").style.display = "none";
+            document.getElementById("acao").value= "login"
+            document.getElementById("titulo_form").innerText = "Login"
+        }
+    </script>
 </body>
 </html>
