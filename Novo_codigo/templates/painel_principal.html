@@ -8,7 +8,12 @@
 </head>
 <body>
     <header>
-        <span>Ola, {{nome_usuario}}</span>
+        <div>
+            <span>Olá, {{nome_usuario}}!</span>
+            <a href="{{sair}}">
+                Não é você?
+            </a>
+        </div>
         <a href="{{voltar}}">
             <button>Voltar para a pagina inical</button>
         </a>
@@ -23,6 +28,7 @@
                 <th>Genero</th>
                 <th>Disponivel</th>
                 <th>Quantidade</th>
+                <th>Emprestar</th>
            </tr>
            {% for livro in livros%}
            <tr>
@@ -32,11 +38,16 @@
                 <td>{{livro["genero"]}}</td>
                 <td>{{'Sim' if livro["disponivel"] else 'Não'}}</td>
                 <td>{{livro["quantidade"] if livro["disponivel"] else 0}}</td>
+                <td>{% if livro["quantidade"] > 0 %}
+                    <form action="{{url_for('emprestar_livros', livro_id = livro['id'])}}" method="post" onsubmit="return confirm('Deseja emprestar este livro?')">
+                        <button type="submit">Emprestar</button>
+                    </form>
+                    {%endif%}
+                </td>
                 
            </tr>
            {%endfor%}
         </table>
-        <button action="/edição_livros"></button>
     </div>    
 </body>
 </html>

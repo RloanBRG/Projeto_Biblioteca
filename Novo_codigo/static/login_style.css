@@ -8,14 +8,21 @@ html{
 body{
     background-color: #222;
     color: white;
-    padding-top: 5%;
     height: 60%;
     width: 100%
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-top: 5px;
 }
 
 #conteudo_site{
     background-color: #444;
     border-radius: 10px;
+    margin-top: 5%;
     padding: 5px 25px 25px 25px;
     height: 50%;
     width: 40%;
@@ -75,7 +82,7 @@ form{
 span{
     font-size: 15px;
 }
-#erro_mensagem{
+.erro_mensagem{
     border-radius: 5px;
     padding: 7px;
     background-color: red;
@@ -83,7 +90,7 @@ span{
     font-weight: bold;
 }
 
-#sucesso_mensagem{
+.sucesso_mensagem{
     border-radius: 5px;
     padding: 7px;
     background-color: green;

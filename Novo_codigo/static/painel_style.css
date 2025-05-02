@@ -12,6 +12,10 @@ header{
     justify-content: space-around;
 }
 
+a{
+    color: white;
+}
+
 .lista_livros{
     display: flex;
     flex-direction: column;

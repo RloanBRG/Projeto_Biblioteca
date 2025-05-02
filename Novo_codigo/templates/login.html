@@ -7,6 +7,11 @@
     <title>Painel de login</title>
 </head>
 <body>
+    <header>
+        <a href="{{voltar}}">
+            <button>voltar para o inicio</button>
+        </a>
+    </header>
     <div id="conteudo_site">
         <div id="login_painel">
             <h2 id="titulo_form">Login</h2>
@@ -26,7 +31,7 @@
                     <button type="submit" id="user_botao">Enviar</button>
                 </form>
                 {% if mensagem %}  
-                    <span id="{{categoria}}_mensagem">{{mensagem}}</span>
+                    <span id="temp_mensagem" class="{{categoria}}_mensagem">{{mensagem}}</span>
                 {% endif %}
             </div>
             
@@ -34,7 +39,7 @@
                 
                 <div>
                     <span id="loginregistrar">Novo aqui?</span>
-                    <button onclick="pararegistro()" id="user_botao">Registre-se</button>
+                    <button onclick="pararegistro()" id="user_botao">Cadastra-se</button>
                 </div>
                 
                 <div>
@@ -59,7 +64,7 @@
             document.getElementById("campo_nome").style.display = "block";
             document.getElementById("campo_idade").style.display = "block";
             document.getElementById("acao").value= "registro"
-            document.getElementById("titulo_form").innerText = "Registro"
+            document.getElementById("titulo_form").innerText = "Cadastro"
             // document.getElementById("conteudo_site").style.width
         }
 
@@ -69,6 +74,14 @@
             document.getElementById("acao").value= "login"
             document.getElementById("titulo_form").innerText = "Login"
         }
+
+        setTimeout(function(){
+            var msg = document.getElementsByClassName("temp_mensagem");
+            if (msg){
+                msg.style.display="none"
+            }
+        }, 4000)
+
     </script>
 </body>
 </html>
