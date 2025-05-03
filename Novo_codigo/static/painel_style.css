@@ -36,6 +36,25 @@ th, td{
     padding: 5px;
     margin: 5px;
 }
-a{
-    size: 10px;
+
+.aviso_mensagem{
+    padding: 15px;
+}
+
+.erro_mensagem{
+    border-radius: 5px;
+    padding: 7px;
+    margin: 10px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.sucesso_mensagem{
+    border-radius: 5px;
+    padding: 7px;
+    margin: 10px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
 }
