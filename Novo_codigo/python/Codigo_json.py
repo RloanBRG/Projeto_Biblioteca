@@ -236,3 +236,4 @@ def devolver_livro():
 # Função 9: autencicação de email do usuario
 def autenticacao_usuario():
     ...
+#comentario

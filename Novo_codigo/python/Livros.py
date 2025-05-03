@@ -22,4 +22,7 @@ class Livro_Objeto: # Cria um objeto Livro
 
     def exibir_dados(self): # Função de retorno de informações
         print(f"Titulo: {self.titulo},\nAno: {self.ano},\nGenero: {self.genero},\nAutor: {self.autor}")
+
+    def algo():
+        ...
         

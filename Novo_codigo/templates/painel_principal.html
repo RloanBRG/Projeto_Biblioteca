@@ -19,6 +19,18 @@
         </a>
     </header>
     <div class="lista_livros">
+        <div class="aviso_mensagem">
+            {% with mensagens = get_flashed_messages(with_categories=true)%}
+                {%if mensagens%}
+                    {% for categoria, mensagem in mensagens%}
+                    <span class="{{categoria}}_mensagem">
+                        {{mensagem}}
+                    </span>
+                    {%endfor%}
+                {%endif%}
+            {%endwith%}
+    
+        </div>
         <table>
             <h1>Listagem de Livros</h1>
             <tr>
@@ -48,6 +60,8 @@
            </tr>
            {%endfor%}
         </table>
-    </div>    
+    </div>
+    
+    
 </body>
 </html>

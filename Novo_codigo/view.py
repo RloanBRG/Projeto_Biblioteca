@@ -1,4 +1,4 @@
-from flask import redirect, url_for, render_template, request, session
+from flask import redirect, url_for, render_template, request, session, flash, get_flashed_messages
 from flask_web import app, login_required
 from python.Codigo_json import carregar_json, salvar_json
 from python.Usuarios import Usuario_Objeto
@@ -8,8 +8,9 @@ import re #importação de autenticação de email ou algo do tipo
 @app.route("/") 
 def inicio():
     go_login = url_for("login_home")
+    sair = url_for("logout")
        
-    return render_template("home.html", click=go_login)
+    return render_template("home.html", click=go_login, sair=sair)
 
 # Pagina de login ou registro
 @app.route("/login", methods=["GET","POST"])
@@ -55,9 +56,12 @@ def login_home():
         #Login
         for usuario in dados["Usuarios"]:
             if usuario['email'] == email and usuario['senha'] == senha:
-                session['usuario'] = usuario['nome']
-                session['email'] = usuario["email"]
-                session['tipo'] = usuario['tipo']
+                session['usuario'] = {
+                                    "nome": usuario["nome"], #salvando o usuario e impormações importantes para uso posterior
+                                    "email": usuario["email"],
+                                    "idade": usuario["idade"],
+
+                                    }
 
                 return redirect(url_for('painel_biblioteca'))
 
@@ -76,10 +80,6 @@ def painel_biblioteca():
     voltar = url_for("inicio")
     sair = url_for('logout')
 
-    emprestar = url_for("emprestar_livros")
-    
-    if 'usuario' not in session:
-        return redirect(url_for('login_home'))
     dados = carregar_json()
 
     if dados is None:
@@ -88,7 +88,7 @@ def painel_biblioteca():
     
     livros = dados["Livros"]
 
-    return render_template("painel_principal.html", emprestar=emprestar, livros=livros, voltar=voltar, sair=sair, nome_usuario=session['usuario'])
+    return render_template("painel_principal.html", livros=livros, voltar=voltar, sair=sair, nome_usuario=session["usuario"]["nome"])
 
 # Sair de um usuario especifico
 @app.route('/logout')
@@ -103,40 +103,41 @@ def emprestar_livros(livro_id):
     if "usuario" not in session:
         return "Usuario não autenticado"
     
-    user_secao = session()
+    user_secao = session["usuario"]
     dados = carregar_json()
 
     for livro in dados["Livros"]:
         if livro["id"] == livro_id and livro["quantidade"] > 0:
-            if livro["quantidade"] == 0:
-                livro["disponive"] = False
             livro["quantidade"] -= 1
+            if livro["quantidade"] == 0:
+                livro["disponivel"] = False
             break
     else:
-        return url_for("painel_biblioteca", mensagem="Erro: livro não encontrado", categoria_mensagem="erro")
+        flash("Erro: livro não encontrado","erro")
+        return redirect(url_for("painel_biblioteca"))
     
     for usuario in dados["Usuarios"]:
-        if usuario["nome"] == user_secao["usuario"] and usuario["email"] == user_secao['email']:
+
+            
+
+        if usuario["nome"] == user_secao["nome"] and usuario["email"] == user_secao['email']:
+            if len(usuario["emprestado"]) >= 3:
+                flash("Erro: limite de emprestimo de livros atingido", "erro")
+                return redirect(url_for("painel_biblioteca"))
             usuario.setdefault("emprestado", []).append(livro_id)
             break
 
     salvar_json(dados)
 
-    return redirect(url_for("painel_biblioteca", mensagem="Emprestimo feito com sucesso", categoria_mensagem="Sucesso"))
+    flash("Emprestimo feito com sucesso", "sucesso")
+    return redirect(url_for("painel_biblioteca"))
 
 # Devolução de Livros
-@app.route("/devolver_livros", methods=["POST"])
-def devolver_livros():
+@app.route("/devolver_livros/<int:livro_id>", methods=["POST"])
+def devolver_livros(livro_id):
     dados = carregar_json()
 
-    if "usuario" not in session:
-        return redirect(url_for("login_home"))
-
-    usuario = None
-    for u in dados['Usuarios']:
-        if u['nome'] == usuario_logado:
-            usuario = u
-            break
+    usuario = dados["Usuarios"]
 
     if livro_id not in usuario.get("emprestado", []):
         return render_template("painel_principal.html", livros=dados["Livros"], mensagem="Você não emprestou este livro!")
