@@ -7,7 +7,7 @@
             "genero": "teste",
             "autor": "da silva",
             "disponivel": true,
-            "quantidade": 3
+            "quantidade": 2
         },
         {
             "id": 2,
@@ -27,11 +27,9 @@
             "email": "verificar@email.com",
             "senha": "verificarsenha",
             "tipo": "comum",
-            "emprestado": [
-                2,
-                2,
-                2
-            ]
+            "emprestado": {
+                "1": 1
+            }
         },
         {
             "id": 2,
@@ -40,7 +38,7 @@
             "email": "adm@email.com",
             "senha": "souumadmbao",
             "tipo": "adm",
-            "emprestado": []
+            "emprestado": {}
         },
         {
             "id": 3,
@@ -49,11 +47,7 @@
             "email": "email@email.com",
             "senha": "sucesso",
             "tipo": "comum",
-            "emprestado": [
-                2,
-                2,
-                1
-            ]
+            "emprestado": {}
         },
         {
             "id": 4,
@@ -62,7 +56,7 @@
             "email": "emaildasilva@email.com",
             "senha": "123123456",
             "tipo": "comum",
-            "emprestado": []
+            "emprestado": {}
         },
         {
             "id": 5,
@@ -71,7 +65,7 @@
             "email": "grande@gmail.com",
             "senha": "gurisdasilva",
             "tipo": "comum",
-            "emprestado": []
+            "emprestado": {}
         }
     ]
 }

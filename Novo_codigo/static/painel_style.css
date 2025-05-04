@@ -7,13 +7,32 @@ body{
     color: white;
 }
 
+h2{
+    text-align: center;
+}
+
 header{
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    background-color: #444;
+    padding: 5px;
 }
 
 a{
     color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+a:hover{
+    transition: 0.5s;
+    color: lightgray;
+    text-decoration: underline;
+}
+
+span{
+    font-size: 20px;
 }
 
 .lista_livros{
@@ -57,4 +76,58 @@ th, td{
     background-color: green;
     color: white;
     font-weight: bold;
+}
+
+button{
+    padding: 5px;
+    font-size: 15px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: solid 2px white;
+}
+
+button:hover{
+    background-color: #777;
+    cursor: pointer;
+    border: solid 2px darkgray;
+    transition: 0.2s;
+}
+
+#titulo_botao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#titulo_botao button{
+    padding: 2px;
+}
+
+
+table{
+    margin: 5px;
+}
+
+.flash-msg{
+    transition: opacity 0.5s ease-out
+}
+
+.flash-msg.esconder{
+    opacity: 0;
+    visibility: hidden;
+}
+
+#flash-container{
+    transition: opacity 0.5s ease-out;
+}
+
+#flash-container.fade-out{
+    opacity: 0;
+}
+
+#livros_emprestados, #livros_disponiveis{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

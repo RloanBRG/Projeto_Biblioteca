@@ -19,11 +19,11 @@
         </a>
     </header>
     <div class="lista_livros">
-        <div class="aviso_mensagem">
-            {% with mensagens = get_flashed_messages(with_categories=true)%}
-                {%if mensagens%}
+        {% with mensagens = get_flashed_messages(with_categories=true)%}
+            {%if mensagens%}
+        <div class="aviso_mensagem" id="flash-container">
                     {% for categoria, mensagem in mensagens%}
-                    <span class="{{categoria}}_mensagem">
+                    <span class="{{categoria}}_mensagem flash-msg">
                         {{mensagem}}
                     </span>
                     {%endfor%}
@@ -31,36 +31,108 @@
             {%endwith%}
     
         </div>
-        <table>
-            <h1>Listagem de Livros</h1>
-            <tr>
-                <th>Titulo</th>
-                <th>Autor</th>
-                <th>Ano</th>
-                <th>Genero</th>
-                <th>Disponivel</th>
-                <th>Quantidade</th>
-                <th>Emprestar</th>
-           </tr>
-           {% for livro in livros%}
-           <tr>
-                <td>{{livro["titulo"]}}</td>
-                <td>{{livro["autor"]}}</td>
-                <td>{{livro["ano"]}}</td>
-                <td>{{livro["genero"]}}</td>
-                <td>{{'Sim' if livro["disponivel"] else 'Não'}}</td>
-                <td>{{livro["quantidade"] if livro["disponivel"] else 0}}</td>
-                <td>{% if livro["quantidade"] > 0 %}
-                    <form action="{{url_for('emprestar_livros', livro_id = livro['id'])}}" method="post" onsubmit="return confirm('Deseja emprestar este livro?')">
-                        <button type="submit">Emprestar</button>
-                    </form>
-                    {%endif%}
-                </td>
-                
-           </tr>
-           {%endfor%}
-        </table>
-    </div>
+        
+        <div id="livros_emprestados">
+            <div id="titulo_botao">
+                <h2>Livros Emprestados</h2>
+                <button onclick="toggletabela('emprestados')">Mostrar/Ocultar Livros Emprestados</button>
+            </div>
+
+            <div id="tabela_emprestados" class="tabela_livros">
+                {%if livros_emprestados%}
+                <table>
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Autor</th>
+                        <th>Ano</th>
+                        <th>Genero</th>
+                        <th>Emprestado</th>
+                        <th>Devolver</th>
+                    </tr>
+                    {%for livro in livros_emprestados%}
+                    <tr>
+                        <td>{{livro['titulo']}}</td>
+                        <td>{{livro['autor']}}</td>
+                        <td>{{livro['ano']}}</td>
+                        <td>{{livro['genero']}}</td>
+                        <td>{{livro["quantidade_emprestada"]}}</td>
+                        <td>
+                            <form action="{{ url_for('devolver_livros', livro_id=livro['id']) }}" method="post" onsubmit="return confirm('Deseja devolver uma unidade deste livro?')">
+                                <button type="submit">Devolver 1</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </table>
+                {%else%}
+                <p>Você não possui livros para devolução</p>
+                {%endif%}
+            </div>
+        </div>
+        
+        <div id="livros_disponiveis">
+            <div id="titulo_botao">
+                <h2>Livros Disponiveis</h2>
+                <button onclick="toggletabela('disponiveis')">Mostrar/Ocultar Livros Disponiveis</button>
+            </div>
+
+            <div id="tabela_disponiveis" class="tabela_livros">
+
+                <table>
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Autor</th>
+                        <th>Ano</th>
+                        <th>Genero</th>
+                        <th>Disponivel</th>
+                        <th>Quantidade</th>
+                        <th>Emprestar</th>
+                    </tr>
+                    {% for livro in livros %}
+                    <tr>
+                        <td>{{livro["titulo"]}}</td>
+                        <td>{{livro["autor"]}}</td>
+                        <td>{{livro["ano"]}}</td>
+                        <td>{{livro["genero"]}}</td>
+                        <td>{{'Sim' if livro["disponivel"] else 'Não'}}</td>
+                        <td>{{livro["quantidade"] if livro["disponivel"] else 0}}</td>
+                        <td>{% if livro["quantidade"] > 0 %}
+                            <form action="{{url_for('emprestar_livros', livro_id = livro['id'])}}" method="post" onsubmit="return confirm('Deseja emprestar este livro?')">
+                                <button type="submit">Emprestar</button>
+                            </form>
+                            {%endif%}
+                        </td>
+                        
+                    </tr>
+                    {%endfor%}
+                </table>
+            </div>
+        </div>
+ </div>
+        
+ <script>
+    function toggletabela(id) {
+        const tabela = document.getElementById('tabela_' + id);
+        if (tabela.style.display === 'none') {
+            tabela.style.display = 'block';
+        } else {
+            tabela.style.display = 'none';
+        }
+    }
+
+    setTimeout(function() {
+        const container = document.getElementById("flash-container");
+        if (container) {
+            // Aplica classe que faz o fade-out
+            container.classList.add("fade-out");
+
+            // Após o tempo da transição (500ms), remove do layout
+            setTimeout(() => {
+                container.style.display = "none";
+            }, 500); // Tempo da transição definido no CSS
+        }
+    }, 3000); // Espera 3 segundos antes de sumir
+    </script>
     
     
 </body>
